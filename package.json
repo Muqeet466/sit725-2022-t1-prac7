@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "name": "sit725-2022-t1-prac2-",
+  "description": "week 2 prac SIT 725 2022",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muqeet466/sit725-2022-t1-prac2-.git"
+  },
+  "keywords": [
+    "Express",
+    "NodeJs"
+  ],
+  "author": "Muqeet",
+  "license": "MIT ",
+  "bugs": {
+    "url": "https://github.com/Muqeet466/sit725-2022-t1-prac2-/issues"
+  },
+  "homepage": "https://github.com/Muqeet466/sit725-2022-t1-prac2-#readme"
+}
