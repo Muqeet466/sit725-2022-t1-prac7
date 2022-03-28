@@ -33,7 +33,6 @@ const submitForm = () => {
     formData.image = $('#image').val();
     formData.link = $('#link').val();
     formData.description = $('#description').val();
-
     console.log("Form Data Submitted: ", formData);
     addProjectToApp(formData);
 }
