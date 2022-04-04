@@ -6,7 +6,7 @@ let projectCollection;
 
 // Database Connection
 
-const uri = "mongodb+srv://muqeet:<Nissanskyline@r34>@cluster1.3ic2y.mongodb.net/sit725_2022_t1?retryWrites=true&w=majority"+process.env.MONGO_USER+":"+process.env.MONGO_PASSWORD+"@cloudbootcamp.bv4zn.mongodb.net/SIT725_2022_t1?retryWrites=true&w=majority" // replace it with the url you get from mongo atlas
+const uri = "mongodb+srv://muqeet:Nissanskyline@r34@cluster1.3ic2y.mongodb.net/sit725_2022_t1?retryWrites=true&w=majority"+process.env.MONGO_USER+":"+process.env.MONGO_PASSWORD+"@cloudbootcamp.bv4zn.mongodb.net/SIT725_2022_t1?retryWrites=true&w=majority" // replace it with the url you get from mongo atlas
 const client = new MongoClient(uri,{ useNewUrlParser: true })
 
 
@@ -28,6 +28,14 @@ const createColllection = (collectionName) => {
     })
 }
 
+const insertProjects = (project,callback) => {
+    projectCollection.insert(project,callback);
+}
+
+const getProjects = (callback) => {
+    projectCollection.find({}).toArray(callback);
+}
+
 const cardList = [
     {
         title: "Kitten 2",
@@ -43,7 +51,27 @@ const cardList = [
     }
 ]
 app.get('/api/projects',(req,res) => {
-            res.json({statusCode: 200, message:"Success", data: cardList})    
+    getProjects((err,result) => {
+        if(err) {
+            res.json({statusCode: 400, message: err})
+        }
+        else {
+            res.json({statusCode: 200, message:"Success", data: result})
+        }
+    })
+})       
+
+app.post('/api/projects',(req,res) => {
+    console.log("New Project added", req.body)
+    var newProject = req.body;
+    insertProjects(newProject,(err,result) => {
+        if(err) {
+            res.json({statusCode: 400, message: err})
+        }
+        else {
+            res.json({statusCode: 200, message:"Project Successfully added", data: result})
+        }
+    })
 })
 const addNumbers = (number1, number2) => {
     var num1 = parseInt(number1)
