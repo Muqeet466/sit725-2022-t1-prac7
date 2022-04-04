@@ -1,9 +1,32 @@
 var express = require("express")
 var app = express()
+var cors = require("cors")
+const MongoClient = require('mongodb').MongoClient;
+let projectCollection;
+
+// Database Connection
+
+const uri = "mongodb+srv://muqeet:<Nissanskyline@r34>@cluster1.3ic2y.mongodb.net/sit725_2022_t1?retryWrites=true&w=majority"+process.env.MONGO_USER+":"+process.env.MONGO_PASSWORD+"@cloudbootcamp.bv4zn.mongodb.net/SIT725_2022_t1?retryWrites=true&w=majority" // replace it with the url you get from mongo atlas
+const client = new MongoClient(uri,{ useNewUrlParser: true })
+
 
 app.use(express.static(__dirname+'/public'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors())
+
+const createColllection = (collectionName) => {
+    client.connect((err,db) => {
+        projectCollection = client.db().collection(collectionName);
+        if(!err) {
+            console.log('MongoDB Connected')
+        }
+        else {
+            console.log("DB Error: ", err);
+            process.exit(1);
+        }
+    })
+}
 
 const cardList = [
     {
@@ -40,4 +63,5 @@ var port = process.env.port || 3000;
 
 app.listen(port,()=>{
     console.log("App running at http://localhost:"+port)
+    createColllection("pets")
 })
