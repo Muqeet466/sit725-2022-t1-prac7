@@ -1,14 +1,11 @@
 {
   "dependencies": {
-    "chai": "^4.3.6",
     "cors": "^2.8.5",
     "express": "^4.17.3",
-    "mocha": "^9.2.2",
-    "mongodb": "^4.4.1",
-    "request": "^2.88.2"
+    "mongodb": "^4.4.1"
   },
-  "name": "sit725-2022-t1-prac4-",
-  "description": "week 4 prac SIT 725 2022",
+  "name": "sit725-2022-t1-prac6-",
+  "description": "week 6 prac SIT 725 2022",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -16,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Muqeet466/sit725-2022-t1-prac4-.git"
+    "url": "git+https://github.com/Muqeet466/sit725-2022-t1-prac6-.git"
   },
   "keywords": [
     "Express",
@@ -25,7 +22,7 @@
   "author": "Muqeet",
   "license": "MIT ",
   "bugs": {
-    "url": "https://github.com/Muqeet466/sit725-2022-t1-prac4-/issues"
+    "url": "https://github.com/Muqeet466/sit725-2022-t1-prac6-/issues"
   },
-  "homepage": "https://github.com/Muqeet466/sit725-2022-t1-prac4-#readme"
+  "homepage": "https://github.com/Muqeet466/sit725-2022-t1-prac6-#readme"
 }
