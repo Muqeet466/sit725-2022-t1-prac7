@@ -6,7 +6,7 @@ let projectCollection;
 
 // Database Connection
 
-const uri = "mongodb+srv://muqeet:Nissanskyline@r34@cluster1.3ic2y.mongodb.net/sit725_2022_t1?retryWrites=true&w=majority"+process.env.MONGO_USER+":"+process.env.MONGO_PASSWORD+"@cloudbootcamp.bv4zn.mongodb.net/SIT725_2022_t1?retryWrites=true&w=majority" // replace it with the url you get from mongo atlas
+const uri = "mongodb+srv://muqeet:muqeet123@cluster1.3ic2y.mongodb.net/sit725_2022_t1?retryWrites=true&w=majority";
 const client = new MongoClient(uri,{ useNewUrlParser: true })
 
 
@@ -80,11 +80,14 @@ const addNumbers = (number1, number2) => {
     return result;
 }
 
-app.get("/addTwoNumbers",(req,res) => {
-    var number1 = req.query.number1;
-    var number2 = req.query.number2;
+app.get("/addTwoNumbers/:firstNumber/:secondNumber",(req,res) => {
+    var number1 = req.params.firstNumber;
+    var number2 = req.params.secondNumber;
     var result = addNumbers(number1,number2)
-    res.json({statusCode: 200, data: result, message:"Success"})
+    if(result == null) {
+        res.json({result: result, statusCode: 400}).status(400)
+      }
+      else { res.json({result: result, statusCode: 200}).status(200) } 
 })
 
 var port = process.env.port || 3000;
