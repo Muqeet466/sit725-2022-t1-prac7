@@ -83,7 +83,7 @@ const addNumbers = (number1, number2) => {
 app.get("/addTwoNumbers/:firstNumber/:secondNumber",(req,res) => {
     var number1 = req.query.number1;
     var number2 = req.query.number2;
-    var result = (num1 + num2) ||null;
+    var result = (num1 + num2) || null;
     if(result == null) {
         res.json({result: result, statusCode: 400}).status(400)
       }
