@@ -3,6 +3,9 @@ var app = express()
 var cors = require("cors")
 const MongoClient = require('mongodb').MongoClient;
 let projectCollection;
+let http = require('http').createServer(app);
+
+let io = require('socket.io')(http);
 
 // Database Connection
 const uri = "mongodb+srv://muqeet:muqeet123@cluster1.3ic2y.mongodb.net/sit725_2022_t1?retryWrites=true&w=majority";
@@ -88,6 +91,17 @@ app.get("/addTwoNumbers/:firstNumber/:secondNumber",(req,res) => {
       }
       else { res.json({result: result, statusCode: 200}).status(200) } 
 })
+
+io.on('connection', (socket) => {
+    console.log('a user connected', socket.id);
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
+    });
+    setInterval(()=>{
+      socket.emit('number', new Date().toISOString());
+    }, 1000);
+  
+  });
 
 var port = process.env.port || 3000;
 
