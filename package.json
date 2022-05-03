@@ -3,6 +3,7 @@
     "chai": "^4.3.6",
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "http": "^0.0.1-security",
     "mocha": "^9.2.2",
     "mongodb": "^4.4.1",
     "request": "^2.88.2",
