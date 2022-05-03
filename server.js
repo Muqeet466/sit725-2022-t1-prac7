@@ -98,7 +98,7 @@ io.on('connection', (socket) => {
       console.log('user disconnected');
     });
     setInterval(()=>{
-      socket.emit('number', new Date().toISOString());
+      socket.emit('number',parseInt(Math.random()*10));
     }, 1000);
   
   });
